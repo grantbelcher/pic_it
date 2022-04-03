@@ -1,9 +1,16 @@
 import React from "react";
+import Header from "./components/Header/Header";
 
 const App = () => (
   <div>
-    <h1 className="wow">Welcome to React!</h1>
+    <Header />
   </div>
 );
 
 export default App;
+
+// create header component
+
+// create pages folder
+//    Create cart page
+//    create photos page
