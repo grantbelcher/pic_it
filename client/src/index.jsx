@@ -1,6 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import App from "./App";
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+console.log(Router, "look here");
+
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  document.querySelector("#root")
+);
