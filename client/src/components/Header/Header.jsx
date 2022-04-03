@@ -3,7 +3,6 @@ import { Link, Switch, Route } from "react-router-dom";
 import styles from "./Header.css";
 
 function Header() {
-  console.log(styles);
   return (
     <header className={styles.background}>
       <Link to="/">

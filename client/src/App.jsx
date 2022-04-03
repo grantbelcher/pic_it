@@ -5,8 +5,6 @@ import { Switch, Route, Routes } from "react-router-dom";
 import Cart from "./pages/Cart";
 import Photos from "./pages/Photos";
 
-console.log(Routes, "loooook here!!");
-
 const App = () => (
   <div>
     <Header />

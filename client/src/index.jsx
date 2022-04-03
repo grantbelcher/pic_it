@@ -2,13 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 
+import { ContextProvider } from "./context";
 import App from "./App";
 
-console.log(Router, "look here");
-
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <ContextProvider>
+    <Router>
+      <App />
+    </Router>
+  </ContextProvider>,
   document.querySelector("#root")
 );
