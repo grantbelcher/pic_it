@@ -4,14 +4,15 @@ function Photo({ img, className, toggleFavorite }) {
   const [hovering, setHovering] = useState(false);
 
   const toggleHover = (isHovering) => {
-    console.log(isHovering);
     setHovering(isHovering);
   };
 
   const heartIcon = hovering && (
     <i
       className="ri-heart-line favorite"
-      onClick={() => toggleFavorite(img.id)}
+      onClick={() => {
+        toggleFavorite(img.id);
+      }}
     ></i>
   );
   const cartIcon = hovering && <i className="ri-add-circle-line cart"></i>;

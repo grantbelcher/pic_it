@@ -5,6 +5,8 @@ const Context = React.createContext();
 function ContextProvider(props) {
   const [photos, setPhotos] = useState([]);
 
+  // const [cart, setCart] = useState([]);
+
   useEffect(() => {
     console.log("getting photos");
     getPhotos();
@@ -20,7 +22,33 @@ function ContextProvider(props) {
       .then((data) => setPhotos(data));
   };
 
-  return <Context.Provider value={photos}>{props.children}</Context.Provider>;
+  const toggleFavorite = (id) => {
+    // Find out if photo is favorited
+    let targetPhoto = photos.find((photo) => {
+      return photo.id === id;
+    });
+
+    let updatedPhoto = {
+      ...targetPhoto,
+      isFavorite: !targetPhoto.isFavorited,
+    };
+
+    const updatedPhotoList = photos.map((photo) => {
+      if (photo.id === id) {
+        return updatedPhoto;
+      } else {
+        return photo;
+      }
+    });
+
+    setPhotos(updatedPhotoList);
+  };
+
+  return (
+    <Context.Provider value={{ photos, toggleFavorite }}>
+      {props.children}
+    </Context.Provider>
+  );
 }
 
 export { ContextProvider, Context };
