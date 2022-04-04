@@ -14,15 +14,16 @@ function ContextProvider(props) {
 
   const getPhotos = () => {
     // fetch photos
-
-    // add photos to context state
-    setPhotos((prevState) => {
-      console.log(prevState, "Previous state");
-      return {
-        ...prevState,
-        photos: ["new photos"],
-      };
-    });
+    fetch(
+      "https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json"
+    )
+      .then((res) => res.json())
+      .then((data) =>
+        setPhotos((prevState) => ({
+          ...prevState,
+          photos: data,
+        }))
+      );
   };
 
   return <Context.Provider value={photos}>{props.children}</Context.Provider>;
