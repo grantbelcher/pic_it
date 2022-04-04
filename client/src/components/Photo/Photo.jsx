@@ -7,7 +7,25 @@ function Photo({ img, className, toggleFavorite }) {
     setHovering(isHovering);
   };
 
-  const heartIcon = hovering && (
+  // const heartIcon = hovering && (
+  //   <i
+  //     className="ri-heart-line favorite"
+  //     onClick={() => {
+  //       toggleFavorite(img.id);
+  //     }}
+  //   ></i>
+  // );
+
+  const heartFullIcon = (
+    <i
+      className="ri-heart-fill favorite"
+      onClick={() => {
+        toggleFavorite(img.id);
+      }}
+    ></i>
+  );
+
+  const heartEmptyIcon = hovering && (
     <i
       className="ri-heart-line favorite"
       onClick={() => {
@@ -15,6 +33,7 @@ function Photo({ img, className, toggleFavorite }) {
       }}
     ></i>
   );
+
   const cartIcon = hovering && <i className="ri-add-circle-line cart"></i>;
 
   return (
@@ -23,7 +42,7 @@ function Photo({ img, className, toggleFavorite }) {
       onMouseEnter={() => toggleHover(true)}
       onMouseLeave={() => toggleHover(false)}
     >
-      {heartIcon}
+      {img.isFavorite ? heartFullIcon : heartEmptyIcon}
       {cartIcon}
       <img src={img.url} className="image-grid" />
     </div>
