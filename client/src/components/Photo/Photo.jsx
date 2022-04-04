@@ -13,6 +13,8 @@ function Photo({ img, className }) {
       onMouseOver={() => toggleHover(true)}
       onMouseOut={() => toggleHover(false)}
     >
+      {hovering ? <i className="ri-heart-line favorite"></i> : null}
+      {hovering ? <i className="ri-add-circle-line cart"></i> : null}
       <img src={img.url} className="image-grid" />
     </div>
   );
