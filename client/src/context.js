@@ -28,9 +28,11 @@ function ContextProvider(props) {
       return photo.id === id;
     });
 
+    console.log(targetPhoto.isFavorite);
+
     let updatedPhoto = {
       ...targetPhoto,
-      isFavorite: !targetPhoto.isFavorited,
+      isFavorite: !targetPhoto.isFavorite,
     };
 
     const updatedPhotoList = photos.map((photo) => {
