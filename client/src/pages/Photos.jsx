@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../context";
+
+import Photo from "../components/Photo/Photo";
 
 function Photos() {
-  return (
-    <>
-      <h1>Photos Page</h1>
-    </>
-  );
+  const photoList = useContext(Context);
+  const photos = photoList.map(({ id, isFavorite, url }) => {
+    return <Photo key={id} isFavorite={isFavorite} url={url} />;
+  });
+  return <>{photos}</>;
 }
 
 export default Photos;
