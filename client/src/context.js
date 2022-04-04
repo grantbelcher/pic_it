@@ -5,7 +5,7 @@ const Context = React.createContext();
 function ContextProvider(props) {
   const [photos, setPhotos] = useState([]);
 
-  // const [cart, setCart] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     console.log("getting photos");
@@ -46,8 +46,30 @@ function ContextProvider(props) {
     setPhotos(updatedPhotoList);
   };
 
+  const toggleCartStatus = (photo) => {
+    // find in cart array
+    let indexInCart;
+    const alreadyInCart = cartItems.find((item, index) => {
+      indexInCart = index;
+      return item.id === photo.id;
+    });
+    // add to cart array if photo is not in cartItems
+    if (alreadyInCart) {
+      // remove from cartItems
+      console.log(indexInCart, "INDEX IN CART");
+      let cartItemsCopy = [...cartItems];
+      cartItemsCopy.splice(indexInCart, 1);
+      setCartItems(cartItemsCopy);
+    } else {
+      const updatedCart = [...cartItems, photo];
+      setCartItems(updatedCart);
+    }
+  };
+
   return (
-    <Context.Provider value={{ photos, toggleFavorite }}>
+    <Context.Provider
+      value={{ photos, cartItems, toggleFavorite, toggleCartStatus }}
+    >
       {props.children}
     </Context.Provider>
   );

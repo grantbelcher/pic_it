@@ -1,20 +1,11 @@
 import React, { useState } from "react";
 
-function Photo({ img, className, toggleFavorite }) {
+function Photo({ img, className, toggleFavorite, toggleCartStatus }) {
   const [hovering, setHovering] = useState(false);
 
   const toggleHover = (isHovering) => {
     setHovering(isHovering);
   };
-
-  // const heartIcon = hovering && (
-  //   <i
-  //     className="ri-heart-line favorite"
-  //     onClick={() => {
-  //       toggleFavorite(img.id);
-  //     }}
-  //   ></i>
-  // );
 
   const heartFullIcon = (
     <i
@@ -25,6 +16,7 @@ function Photo({ img, className, toggleFavorite }) {
     ></i>
   );
 
+  // IF HOVERING then RETURN EMPTY HEART, otherwise display nothing
   const heartEmptyIcon = hovering && (
     <i
       className="ri-heart-line favorite"
@@ -34,7 +26,12 @@ function Photo({ img, className, toggleFavorite }) {
     ></i>
   );
 
-  const cartIcon = hovering && <i className="ri-add-circle-line cart"></i>;
+  const cartIcon = hovering && (
+    <i
+      className="ri-add-circle-line cart"
+      onClick={() => toggleCartStatus(img)}
+    ></i>
+  );
 
   return (
     <div
