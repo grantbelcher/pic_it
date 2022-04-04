@@ -56,7 +56,6 @@ function ContextProvider(props) {
     // add to cart array if photo is not in cartItems
     if (alreadyInCart) {
       // remove from cartItems
-      console.log(indexInCart, "INDEX IN CART");
       let cartItemsCopy = [...cartItems];
       cartItemsCopy.splice(indexInCart, 1);
       setCartItems(cartItemsCopy);
