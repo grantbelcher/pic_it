@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Photo({ img, className, toggleFavorite, toggleCartStatus }) {
+function Photo({ img, className, toggleFavorite, toggleCartStatus, inCart }) {
   const [hovering, setHovering] = useState(false);
 
   const toggleHover = (isHovering) => {
@@ -26,7 +26,14 @@ function Photo({ img, className, toggleFavorite, toggleCartStatus }) {
     ></i>
   );
 
-  const cartIcon = hovering && (
+  const cartIcon = (
+    <i
+      className="ri-shopping-cart-fill cart"
+      onClick={() => toggleCartStatus(img)}
+    ></i>
+  );
+
+  const addIcon = hovering && (
     <i
       className="ri-add-circle-line cart"
       onClick={() => toggleCartStatus(img)}
@@ -40,7 +47,8 @@ function Photo({ img, className, toggleFavorite, toggleCartStatus }) {
       onMouseLeave={() => toggleHover(false)}
     >
       {img.isFavorite ? heartFullIcon : heartEmptyIcon}
-      {cartIcon}
+      {/* {cartIcon} */}
+      {inCart ? cartIcon : addIcon}
       <img src={img.url} className="image-grid" />
     </div>
   );
